@@ -15,7 +15,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
-          child: Column(
+          child: Stack(
         children: [
           SizedBox(
             height: 482.h,
@@ -25,7 +25,7 @@ class LoginView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 18, right: 18),
+            padding: const EdgeInsets.only(top: 400, left: 18, right: 18),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -88,7 +88,7 @@ class LoginView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Didn’t have any account?",
+                      "Didn’t have any account? ",
                       style: Styles.textStyle14.copyWith(color: kGrayColor),
                     ),
                     GestureDetector(
