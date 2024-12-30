@@ -14,7 +14,7 @@ abstract class Styles {
 
   static final textStyle14 = GoogleFonts.dmSans(
     fontSize: 14,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w700,
   );
 
   static final textStyle12 = GoogleFonts.dmSans(

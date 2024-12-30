@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
 import 'package:tasky/constans.dart';
 import 'package:tasky/core/utilis/styles.dart';
+import 'package:tasky/features/auth/presentation/views/login_view.dart';
+import 'package:tasky/features/onboarding/presentation/views/widgets/custom_button.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
@@ -12,6 +14,8 @@ class OnboardingView extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+
         child: Column(
           children: [
             SizedBox(
@@ -45,31 +49,34 @@ class OnboardingView extends StatelessWidget {
                   SizedBox(
                     height: 28.h,
                   ),
-                  Container(
-                    width: 331.w,
-                    height: 49.h,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12),
+                  CutomButton(
+                    title: "Let's Start",
+                    icon: IconlyBold.arrow_right,
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  const LoginView(),
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            const begin = Offset(1.0, 0.0);
+                            const end = Offset.zero;
+                            const curve = Curves.easeInOut;
+
+                            var tween = Tween(begin: begin, end: end)
+                                .chain(CurveTween(curve: curve));
+                            var offsetAnimation = animation.drive(tween);
+
+                            return SlideTransition(
+                              position: offsetAnimation,
+                              child: child,
+                            );
+                          },
                         ),
-                        color: Color(0xff5F33E1)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Let's Start",
-                          style:
-                              Styles.textStyle19.copyWith(color: kPrimaryColor),
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        const Icon(
-                          IconlyBold.arrow_right,
-                          color: kPrimaryColor,
-                        )
-                      ],
-                    ),
+                      );
+                    },
                   ),
                   SizedBox(
                     height: 36.h,
