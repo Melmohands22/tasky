@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:tasky/features/home/presentation/views/home_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tasky/features/onboarding/presentation/views/onboarding_view.dart';
 
 void main() {
-  runApp(const Tasky());
+  runApp(const MyApp());
 }
 
-class Tasky extends StatelessWidget {
-  const Tasky({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeView(),
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            textTheme: GoogleFonts.dmSansTextTheme(
+              Theme.of(context).textTheme,
+            ),
+          ),
+          home: const OnboardingView(),
+        );
+      },
     );
   }
 }
