@@ -10,8 +10,9 @@ class RegisteLoading extends RegisterState {}
 class RegisteSuccess extends RegisterState {}
 
 class RegisteError extends RegisterState {
-  final String message;
-  RegisteError(this.message);
+   final String message;
+
+  RegisteError( {required this.message});
 }
 
 class AuthRefreshed extends RegisterState {}

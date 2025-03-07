@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasky/constans.dart';
 
 class CustomTextFormField extends StatelessWidget {
+  final String hintText;
+  final Color hintColor;
+  final TextInputType? type;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final bool obscureText;
+  final Widget? suffixWidget;
+  final Widget? prefixWidget;
+
   const CustomTextFormField({
     super.key,
     required this.hintText,
-    this.prefixWidget,
-    this.suffixWidget,
     required this.hintColor,
     this.type,
+    this.controller,
+    this.validator,
+    this.obscureText = false,
+    this.suffixWidget,
+    this.prefixWidget,
   });
 
-  final String hintText;
-  final Widget? prefixWidget;
-  final Widget? suffixWidget;
-  final Color hintColor;
-  final TextInputType? type;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       keyboardType: type,
+      obscureText: obscureText,
       decoration: InputDecoration(
-        suffixIcon: suffixWidget,
         hintText: hintText,
-        hintStyle: TextStyle(color: hintColor),
-        prefixIcon: prefixWidget != null
-            ? Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  prefixWidget!,
-                  SizedBox(width: 8.w),
-                ],
-              )
-            : null,
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
-          borderSide: BorderSide(color: Color(0xffBABABA)),
+        hintStyle: const TextStyle(color: kGrayColor),
+        suffixIcon: suffixWidget,
+        prefixIcon: prefixWidget,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: const BorderSide(color: Colors.grey, width: 1),
         ),
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
       ),
+      validator: validator,
     );
   }
 }

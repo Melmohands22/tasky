@@ -3,15 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasky/constans.dart';
 import 'package:tasky/core/utilis/styles.dart';
 
-class CutomButton extends StatelessWidget {
-  const CutomButton({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     super.key,
     required this.title,
-    this.icon, required this.onTap,
+    this.icon,
+    required this.onTap,
+     this.isLoading,
   });
   final String title;
   final IconData? icon;
-  final  VoidCallback onTap;
+  final VoidCallback onTap;
+  final bool? isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

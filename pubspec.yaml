@@ -29,18 +29,23 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
   dio: ^5.7.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.0.0
   flutter_native_splash: ^2.4.4
   flutter_screenutil: ^5.9.3
+  flutter_secure_storage: ^9.2.3
+  get_it: ^8.0.3
   google_fonts: ^6.2.1
   iconly: ^1.0.1
-  libphonenumber: ^2.0.2
+  intl_phone_field: ^3.2.0
+  logger: ^2.5.0
+  shared_preferences: ^2.3.5
 
 dev_dependencies:
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 
